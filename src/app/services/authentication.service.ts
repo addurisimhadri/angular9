@@ -15,7 +15,7 @@ export class AuthenticationService {
   constructor(private httpClient:HttpClient) { }
 
   authenticate(loginPayload) {
-    alert(loginPayload.username+""+loginPayload.password);
+    //alert(loginPayload.username+""+loginPayload.password);
     let username=loginPayload.username;
     let password=loginPayload.password;
     return this.httpClient

@@ -19,29 +19,42 @@ export class JwtResponse1{
      ) {}
   
 }
+export class ApiResponse {
+
+  status: number;
+  message: number;
+  result: any;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeserviceService {
-
+  response:any;
   //public jwtResponse : JwtResponse;
   constructor(private httpClient:HttpClient) { }
     
   getEmployees(): Observable<Employee[]>
-  { 
-    
-    console.log("token "+sessionStorage.getItem('token')); 
-    const headers = new HttpHeaders({ Authorization: ""+sessionStorage.getItem("token") }); 
-    console.log("test call "+headers.get("Authorization")); 
-    return this.httpClient.get<Employee[]>("http://dev.wicore.in:8080/cmsapi/api/employee/getAll", {headers});
+  {     
+    //console.log("token "+sessionStorage.getItem('token')); 
+    //const headers = new HttpHeaders({ Authorization: ""+sessionStorage.getItem("token") }); 
+    //console.log("test call "+headers.get("Authorization")); 
+    return this.httpClient.get<Employee[]>("http://dev.wicore.in:8080/cmsapi/api/employee/getAll");
   }
   public deleteEmployee(employee) {
-    return this.httpClient.delete<Employee>("http://dev.wicore.in:8080/cmsapi/api/employee/get" + "/"+ employee.id);
+    return this.httpClient.delete<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/delete" + "/"+ employee.id);
+  }
+  public getEmployeeById(employeeId) {
+    //console.log("token "+sessionStorage.getItem('token')); 
+    //const headers = new HttpHeaders({ Authorization: ""+sessionStorage.getItem("token") }); 
+    //console.log("test call "+headers.get("Authorization")); 
+    return this.httpClient.get<Employee>("http://dev.wicore.in:8080/cmsapi/api/employee/get" + "/"+ employeeId);
   }
   public createEmployee(employee) { 
-    return this.httpClient.post<Employee>("http://dev.wicore.in:8080/cmsapi/api/employee/add", employee);
+    return this.httpClient.post<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/add", employee);
   }
-  public updateEmployee(employee) {   
+  public updateEmployee(employee) {
+    alert(employee);
     return this.httpClient.post<Employee>("http://dev.wicore.in:8080/cmsapi/api/employee/update"+ "/"+ employee.id, employee);
   }
 }

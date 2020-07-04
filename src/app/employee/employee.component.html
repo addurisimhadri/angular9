@@ -1,5 +1,9 @@
 <br/>
-<div class="container">
+<div class="col-md-10 user-container">
+  <h2 style="margin: auto"> Employee Details</h2>
+  <div class="addemp">
+  <button class="btn btn-danger" style="width:100px" (click)="addEmployee()"> Add User</button>
+  </div>
     <table class="table table-bordered">
     <thead>
     <tr>
@@ -18,8 +22,10 @@
             <td>{{employee.salary}}</td>
             <td>{{employee.email}}</td>
             <td>{{employee.add}}</td>
-            <td><a  routerLink="/editemployee" class="nav-link"><button class="btn btn-danger">Edit Employee</button></a>
-            <button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td>
+            <td>            
+            <button class="btn btn-success" (click)="editEmployee(employee)" > Edit</button>
+            <button class="btn btn-success" (click)="deleteEmployee(employee)" style="margin-left: 20px;"> Delete</button>
+          </td>
             </tr>
     </tbody>
       </table>
