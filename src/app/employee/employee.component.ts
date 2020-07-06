@@ -18,8 +18,9 @@ export class EmployeeComponent implements OnInit {
   }
   deleteEmployee(employee: Employee): void {
     this.employeeserviceService.deleteEmployee(employee)
-      .subscribe( data => {
-        this.router.navigate(['']);
+      .subscribe( data => { 
+        alert(data.message); 
+        this.employees = this.employees.filter(e => e !== employee);
       })
   }; 
   editEmployee(employee: Employee): void {

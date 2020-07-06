@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { InterceptorService } from './services/interceptor.service';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { InterceptorService } from './services/interceptor.service';
     FooterComponent,
     LoginComponent,
     LogoutComponent,
-    EditemployeeComponent
+    EditemployeeComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

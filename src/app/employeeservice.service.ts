@@ -41,20 +41,16 @@ export class EmployeeserviceService {
     //console.log("test call "+headers.get("Authorization")); 
     return this.httpClient.get<Employee[]>("http://dev.wicore.in:8080/cmsapi/api/employee/getAll");
   }
-  public deleteEmployee(employee) {
+  deleteEmployee(employee) : Observable<ApiResponse>{
     return this.httpClient.delete<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/delete" + "/"+ employee.id);
   }
-  public getEmployeeById(employeeId) {
-    //console.log("token "+sessionStorage.getItem('token')); 
-    //const headers = new HttpHeaders({ Authorization: ""+sessionStorage.getItem("token") }); 
-    //console.log("test call "+headers.get("Authorization")); 
-    return this.httpClient.get<Employee>("http://dev.wicore.in:8080/cmsapi/api/employee/get" + "/"+ employeeId);
+  getEmployeeById(employeeId) :Observable<ApiResponse> {
+    return this.httpClient.get<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/get" + "/"+ employeeId);
   }
-  public createEmployee(employee) { 
+  createEmployee(employee) :Observable<ApiResponse>{ 
     return this.httpClient.post<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/add", employee);
   }
-  public updateEmployee(employee) {
-    alert(employee);
-    return this.httpClient.post<Employee>("http://dev.wicore.in:8080/cmsapi/api/employee/update"+ "/"+ employee.id, employee);
+  public updateEmployee(employee) :Observable<ApiResponse> {
+    return this.httpClient.put<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/update"+ "/"+ employee.id, employee);
   }
 }

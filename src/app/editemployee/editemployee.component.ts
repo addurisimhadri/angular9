@@ -21,15 +21,15 @@ export class EditemployeeComponent implements OnInit {
     }
     this.employeeserviceService.getEmployeeById(editEmpId)
     .subscribe( data => {
-      this.employee=data;
+      this.employee=data.result;
     });
 
   }
   updateEmployee(): void {
     this.employeeserviceService.updateEmployee(this.employee)
         .subscribe( data => {
+          alert(data.message);
           this.router.navigate([''])
-          alert("Employee updated successfully.");
         });
   };
   cancel(): void {   
