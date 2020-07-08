@@ -34,12 +34,13 @@ export class EmployeeserviceService {
   //public jwtResponse : JwtResponse;
   constructor(private httpClient:HttpClient) { }
     
-  getEmployees(): Observable<Employee[]>
+  getEmployees(request): Observable<Employee[]>
   {     
     //console.log("token "+sessionStorage.getItem('token')); 
     //const headers = new HttpHeaders({ Authorization: ""+sessionStorage.getItem("token") }); 
     //console.log("test call "+headers.get("Authorization")); 
-    return this.httpClient.get<Employee[]>("http://dev.wicore.in:8080/cmsapi/api/employee/getAll");
+    const params = request;
+    return this.httpClient.get<Employee[]>("http://dev.wicore.in:8080/cmsapi/api/employee/getAll",{params});
   }
   deleteEmployee(employee) : Observable<ApiResponse>{
     return this.httpClient.delete<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/delete" + "/"+ employee.id);

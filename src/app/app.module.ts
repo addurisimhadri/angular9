@@ -16,7 +16,13 @@ import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { InterceptorService } from './services/interceptor.service';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
-
+import { PostComponent } from './post/post.component';
+import { ListPostsComponent } from './list-posts/list-posts.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {  MatSidenavModule } from '@angular/material/sidenav';
+import {  MatMenuModule } from '@angular/material/menu';
+import {  MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,14 +34,21 @@ import { ChildComponent } from './child/child.component';
     LogoutComponent,
     EditemployeeComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    PostComponent,
+    ListPostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    BrowserAnimationsModule ,
+    MatButtonModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatPaginatorModule
   ],
   providers: [
    { provide: HTTP_INTERCEPTORS,

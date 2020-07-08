@@ -1,0 +1,21 @@
+
+<div class="wrapper">
+    <h1>Post Message</h1>
+    <form #postForm="ngForm" (ngSubmit)="submit(postForm.value)">       
+        <textarea name="postmsg" id="postmsg" ngModel #postmsg="ngModel"class="form-control" maxlength="300" placeholder="Start Typin..." required></textarea>
+        <div class="alert alert-danger" *ngIf="postmsg.touched && !postmsg.valid">
+            <div *ngIf="postmsg.errors.required">Post Message is required.</div>            
+        </div>
+        <div id="the-count">
+            <button class="btn btn-primary" type="submit" [class.disabled]="!postForm.valid">Post</button> <button  type="reset" class="btn btn-primary" (click)="reset()" style="margin-left: 20px;margin-right: 20px;">Cancel</button>
+        <span id="current" >0</span>
+        <span id="maximum">/ 300</span>
+        </div>
+ 
+
+    </form> 
+</div>
+
+
+<app-list-posts  [childMessage]="parentMessage" ></app-list-posts>
+

@@ -7,6 +7,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { LogoutComponent } from './logout/logout.component';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { ParentComponent } from './parent/parent.component';
+import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   { path:'', component: EmployeeComponent,canActivate:[AuthGuardService]},
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path:'addemployee', component: AddEmployeeComponent,canActivate:[AuthGuardService]},
   { path:'editemployee', component: EditemployeeComponent,canActivate:[AuthGuardService]},
   { path:'parent', component: ParentComponent,canActivate:[AuthGuardService]},
-  { path:'logout', component: LogoutComponent,canActivate:[AuthGuardService]}
+  { path:'logout', component: LogoutComponent,canActivate:[AuthGuardService]},
+  { path:'posts', component: PostComponent,canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
