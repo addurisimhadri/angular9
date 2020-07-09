@@ -1,6 +1,6 @@
 
 .wrapper {
-  max-width: 75%;
+  max-width: 80%;
   margin: auto;
 }
 
@@ -25,5 +25,16 @@ textarea {
   float: right;
   padding: 10px 0 0 0;
   font-size: 0.875rem;
-  
+}
+.post{
+  padding: 15px 0px;
+}
+.user-container {
+	width: 80% !important;
+	margin: auto;
+}
+.col-md-10{
+  padding-right: 2px;
+  padding-left: 2px;
+  margin-top: 25px;
 }

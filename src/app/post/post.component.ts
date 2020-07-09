@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostserviceService ,PostMsg } from '../services/postservice.service';
+import {Router} from "@angular/router";
+import { PageEvent } from '@angular/material/paginator';
 declare var jQuery: any;
 @Component({
   selector: 'app-post',
@@ -6,12 +9,19 @@ declare var jQuery: any;
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  postMsgs:PostMsg[];
   
+  postMsg:PostMsg = new PostMsg("","","","","");
+  totalElements: number = 0;
+  loading: boolean;
   parentMessage = "message from parent"
-  constructor() {
+  constructor(private router: Router,private postserviceService:PostserviceService) {
    }
 
   ngOnInit(): void {
+    var userId=sessionStorage.getItem('userId');
+    this.postMsg.userId=userId;
+    this.getAllPostMsgs({ page: "0", size: "5" });
     (function ($) {
       $('textarea').keyup(function() {
           var characterCount = $(this).val().length,
@@ -47,17 +57,46 @@ export class PostComponent implements OnInit {
         
     })(jQuery);
   }
-  
-  createPost(): void {
-    
-  };
+
   reset(): void {
     (function ($) {
       $("#current").text(0);        
     })(jQuery);
   };
+ 
   submit(form){
-    var post = form.post;
-    console.log(post);
+    var userId=sessionStorage.getItem('userId');
+    var postmsg = form.postmsg;
+    const request = {};
+    request['userId'] = userId;
+    request['postmsg'] = postmsg;
+    //this.postserviceService.createPostMsg(request)
+    //alert(this.postMsg.userId);
+    this.postserviceService.createPostMsg(this.postMsg)
+    .subscribe( data => {
+      this.router.navigate(['posts'])
+      //alert(data.message);
+      this.getAllPostMsgs({ page: "0", size: "5" });
+    });
+
+  }
+  getAllPostMsgs(request) : void{
+    this.loading = true;
+    this.postserviceService.getPostMsgs(request)
+    .subscribe(
+     response =>{
+       this.postMsgs = response.result['content'];
+       this.totalElements = response.result['totalElements'];
+       this.loading = false;
+      }, error => {
+        this.loading = false;
+      }
+    );
+  }
+  nextPage(event: PageEvent) {
+    const request = {};
+    request['page'] = event.pageIndex.toString();
+    request['size'] = event.pageSize.toString();
+    this.getAllPostMsgs(request);
   }
 }

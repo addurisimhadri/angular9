@@ -30,7 +30,7 @@ export class ApiResponse {
   providedIn: 'root'
 })
 export class EmployeeserviceService {
-  response:any;
+  //response:any;
   //public jwtResponse : JwtResponse;
   constructor(private httpClient:HttpClient) { }
     
