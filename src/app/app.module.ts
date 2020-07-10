@@ -23,6 +23,9 @@ import {  MatSidenavModule } from '@angular/material/sidenav';
 import {  MatMenuModule } from '@angular/material/menu';
 import {  MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PostserviceService } from './services/postservice.service';
+import { ImageserviceService } from './services/imageservice.service';
+import { UserimageuploadComponent } from './userimageupload/userimageupload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ParentComponent,
     ChildComponent,
     PostComponent,
-    ListPostsComponent
+    ListPostsComponent,
+    UserimageuploadComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
    { provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
     multi: true},
-    EmployeeserviceService
+    EmployeeserviceService,
+    PostserviceService,
+    ImageserviceService
   ], 
   bootstrap: [AppComponent]
 })

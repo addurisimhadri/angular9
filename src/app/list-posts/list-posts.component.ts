@@ -1,5 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
-
+import { PostMsg } from '../services/postservice.service';
 @Component({
   selector: 'app-list-posts',
   templateUrl: './list-posts.component.html',
@@ -8,7 +8,7 @@ import { Component, OnInit ,Input} from '@angular/core';
 export class ListPostsComponent implements OnInit {
 
   constructor() { }
-  @Input() childMessage: string;
+  @Input() postMsg: PostMsg;
   ngOnInit(): void {
   }
 

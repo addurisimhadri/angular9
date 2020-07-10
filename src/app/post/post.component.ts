@@ -64,20 +64,19 @@ export class PostComponent implements OnInit {
     })(jQuery);
   };
  
-  submit(form){
-    var userId=sessionStorage.getItem('userId');
-    var postmsg = form.postmsg;
-    const request = {};
-    request['userId'] = userId;
-    request['postmsg'] = postmsg;
-    //this.postserviceService.createPostMsg(request)
+  submit(){
     //alert(this.postMsg.userId);
-    this.postserviceService.createPostMsg(this.postMsg)
-    .subscribe( data => {
-      this.router.navigate(['posts'])
-      //alert(data.message);
-      this.getAllPostMsgs({ page: "0", size: "5" });
-    });
+    if(this.postMsg.msg!=""){
+      this.postserviceService.createPostMsg(this.postMsg)
+      .subscribe( data => {
+        this.router.navigate(['posts'])
+        //alert(data.message);
+        this.getAllPostMsgs({ page: "0", size: "5" });
+        this.postMsg.msg='';
+      });
+    }else{
+      alert("Please Enter Post Message");
+    }
 
   }
   getAllPostMsgs(request) : void{

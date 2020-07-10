@@ -8,6 +8,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { ParentComponent } from './parent/parent.component';
 import { PostComponent } from './post/post.component';
+import { UserimageuploadComponent } from './userimageupload/userimageupload.component';
 
 const routes: Routes = [
   { path:'', component: EmployeeComponent,canActivate:[AuthGuardService]},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path:'editemployee', component: EditemployeeComponent,canActivate:[AuthGuardService]},
   { path:'parent', component: ParentComponent,canActivate:[AuthGuardService]},
   { path:'logout', component: LogoutComponent,canActivate:[AuthGuardService]},
-  { path:'posts', component: PostComponent,canActivate:[AuthGuardService]}
+  { path:'posts', component: PostComponent,canActivate:[AuthGuardService]},
+  { path:'upload', component: UserimageuploadComponent,canActivate:[AuthGuardService]}
 ];
 
 @NgModule({

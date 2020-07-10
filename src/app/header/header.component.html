@@ -1,15 +1,13 @@
 <header>
     <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
-    <div><a href="https://www.javainuse.com" class="navbar-brand">Simhadri</a></div>    
+    <div><a href="/upload" class="navbar-brand">Simhadri</a></div>    
     <ul class="navbar-nav">
       <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/" class="nav-link">View Employees</a></li>
-      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/parent" class="nav-link">Parent</a></li>
       <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/posts" class="nav-link">Posts</a></li>
     </ul>
     <ul class="navbar-nav navbar-collapse justify-content-end">
-      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout" class="nav-link signout"><img src="assets/images/log_icon_1.png" class="img" > LogOut</a>
-        
+      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout" class="nav-link signout"><img src="assets/images/log_icon_1.png" class="img" > LogOut</a>        
       </li>
     </ul>    
     </nav>  
-    </header>
+    </header> 
