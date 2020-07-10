@@ -50,9 +50,9 @@ export class UserimageuploadComponent implements OnInit {
           //this.retrieveResonse = res;
           //this.base64Data = this.retrieveResonse.picByte;
           this.base64Data = res;
-          var urlCreator = window.URL;
+          //var urlCreator = window.URL;
           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-          this.retrievedImage.bypassSecurityTrustUrl(urlCreator.createObjectURL(res));
+          //this.retrievedImage.bypassSecurityTrustUrl(urlCreator.createObjectURL(res));
         }, error => {
           alert(console.error());
           alert(error.status+"=========="+error.message+"=========="+error.data);
