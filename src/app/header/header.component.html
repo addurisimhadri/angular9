@@ -1,8 +1,12 @@
 <header>
     <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
-    <div><a href="/upload" class="navbar-brand">Simhadri</a></div>    
+      <div *ngIf="authService.isUserLoggedIn() && retrievedImage">
+        <img  class="img" [src]="retrievedImage">
+    </div>
+    <div style="margin-left: 5px;"><a href="/upload" class="navbar-brand">Simhadri</a></div>    
     <ul class="navbar-nav">
-      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/" class="nav-link">View Employees</a></li>
+      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/home" class="nav-link">Home</a></li>
+      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/viewemployee" class="nav-link">View Employees</a></li>
       <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/posts" class="nav-link">Posts</a></li>
     </ul>
     <ul class="navbar-nav navbar-collapse justify-content-end">

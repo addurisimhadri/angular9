@@ -9,7 +9,7 @@ declare var jQuery: any;
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  postMsgs:PostMsg[];
+  postMsgs:PostMsg[]=[];
   
   postMsg:PostMsg = new PostMsg("","","","","");
   totalElements: number = 0;

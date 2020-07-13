@@ -26,6 +26,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostserviceService } from './services/postservice.service';
 import { ImageserviceService } from './services/imageservice.service';
 import { UserimageuploadComponent } from './userimageupload/userimageupload.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { UserimageuploadComponent } from './userimageupload/userimageupload.comp
     ChildComponent,
     PostComponent,
     ListPostsComponent,
-    UserimageuploadComponent
+    UserimageuploadComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

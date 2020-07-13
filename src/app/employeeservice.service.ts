@@ -32,6 +32,7 @@ export class ApiResponse {
 export class EmployeeserviceService {
   //response:any;
   //public jwtResponse : JwtResponse;
+  web_url : any =sessionStorage.getItem('web_url');
   constructor(private httpClient:HttpClient) { }
     
   getEmployees(request): Observable<Employee[]>
@@ -40,18 +41,18 @@ export class EmployeeserviceService {
     //const headers = new HttpHeaders({ Authorization: ""+sessionStorage.getItem("token") }); 
     //console.log("test call "+headers.get("Authorization")); 
     const params = request;
-    return this.httpClient.get<Employee[]>("http://dev.wicore.in:8080/cmsapi/api/employee/getAll",{params});
+    return this.httpClient.get<Employee[]>(this.web_url+"/cmsapi/api/employee/getAll",{params});
   }
   deleteEmployee(employee) : Observable<ApiResponse>{
-    return this.httpClient.delete<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/delete" + "/"+ employee.id);
+    return this.httpClient.delete<ApiResponse>(this.web_url+"/cmsapi/api/employee/delete" + "/"+ employee.id);
   }
   getEmployeeById(employeeId) :Observable<ApiResponse> {
-    return this.httpClient.get<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/get" + "/"+ employeeId);
+    return this.httpClient.get<ApiResponse>(this.web_url+"/cmsapi/api/employee/get" + "/"+ employeeId);
   }
   createEmployee(employee) :Observable<ApiResponse>{ 
-    return this.httpClient.post<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/add", employee);
+    return this.httpClient.post<ApiResponse>(this.web_url+"/cmsapi/api/employee/add", employee);
   }
   public updateEmployee(employee) :Observable<ApiResponse> {
-    return this.httpClient.put<ApiResponse>("http://dev.wicore.in:8080/cmsapi/api/employee/update"+ "/"+ employee.id, employee);
+    return this.httpClient.put<ApiResponse>(this.web_url+"/cmsapi/api/employee/update"+ "/"+ employee.id, employee);
   }
 }

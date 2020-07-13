@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Output,EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 export class User{
@@ -11,7 +11,9 @@ export class User{
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+  @Output() getLoggedInUserId: EventEmitter<any> = new EventEmitter();
+  //web_url : any="http://dev.wicore.in:8080";
+  web_url : any="http://localhost:2018";
   constructor(private httpClient:HttpClient) { }
 
   authenticate(loginPayload) {
@@ -19,9 +21,12 @@ export class AuthenticationService {
     let username=loginPayload.username;
     let password=loginPayload.password;
     return this.httpClient
-      .post<any>("http://dev.wicore.in:8080/cmsapi/authenticate", { username, password})
+      .post<any>(this.web_url+"/cmsapi/authenticate", { username, password})
       .pipe(
         map(userData => {
+          //alert("===========");
+          this.getLoggedInUserId.emit(userData.userId);
+          sessionStorage.setItem("web_url", this.web_url);
           sessionStorage.setItem("username", userData.token);
           let tokenStr = "Bearer " + userData.token;
           sessionStorage.setItem("token", tokenStr);
@@ -37,6 +42,7 @@ export class AuthenticationService {
   }
   logOut() { 
     sessionStorage.removeItem('username')
+    sessionStorage.removeItem('userId')
   }
   
 }

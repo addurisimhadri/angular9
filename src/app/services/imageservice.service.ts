@@ -18,22 +18,21 @@ export class  ImageModel{
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class ImageserviceService {
+  web_url : any =sessionStorage.getItem('web_url');
   constructor(private httpClient: HttpClient) { }
   picByte: any;
-  upload(uploadImageData,userId) :Observable<ApiResponse>{
+  upload(uploadImageData,userId) :Observable<any>{
     //const params = request;
     //alert(postMsg.msg);
-    return this.httpClient.post<ApiResponse>('http://dev.wicore.in:8080/cmsapi/upload/user/'+userId, uploadImageData)
+    return this.httpClient.post<any>(this.web_url+'/cmsapi/upload/user/'+userId, uploadImageData,{reportProgress: true,observe: 'events'})
     
   }
-  getImage(userId) : Observable<any>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'image/jpg',
-      'Accept': 'image/webp,*/*',
-    });
-    this.picByte = this.httpClient.get<any>('http://dev.wicore.in:8080/cmsapi/upload/getImage/' + userId,{headers: headers, responseType: 'blob' as 'json' });
-    alert(this.picByte);
-    return this.picByte;
+  getImage(userId) : Observable<ImageModel>{
+    return this.httpClient.get<ImageModel>(this.web_url+'/cmsapi/upload/getImageM/' + userId);
+    //alert(this.picByte);
+    //return this.picByte;
   }
 } 

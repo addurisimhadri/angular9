@@ -9,9 +9,12 @@ import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { ParentComponent } from './parent/parent.component';
 import { PostComponent } from './post/post.component';
 import { UserimageuploadComponent } from './userimageupload/userimageupload.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path:'', component: EmployeeComponent,canActivate:[AuthGuardService]},
+  { path:'', component: LoginComponent},
+  { path:'home', component: HomeComponent,canActivate:[AuthGuardService]},
+  { path:'viewemployee', component: EmployeeComponent,canActivate:[AuthGuardService]},
   { path:'login', component: LoginComponent }, 
   { path:'addemployee', component: AddEmployeeComponent,canActivate:[AuthGuardService]},
   { path:'editemployee', component: EditemployeeComponent,canActivate:[AuthGuardService]},

@@ -25,14 +25,14 @@ export class ApiResponse {
 export class PostserviceService {
 
   constructor(private httpClient:HttpClient) { }
-
+  web_url : any =sessionStorage.getItem('web_url');
   getPostMsgs(request): Observable<ApiResponse> {     
     const params = request;
-    return this.httpClient.get<ApiResponse>("http://dev.wicore.in:8080/cmsapi/post/getAll",{params});
+    return this.httpClient.get<ApiResponse>(this.web_url+"/cmsapi/post/getAll",{params});
   }
   createPostMsg(postMsg) :Observable<ApiResponse>{
     //const params = request;
     //alert(postMsg.msg);
-    return this.httpClient.post<ApiResponse>("http://dev.wicore.in:8080/cmsapi/post/add", postMsg);
+    return this.httpClient.post<ApiResponse>(this.web_url+"/cmsapi/post/add", postMsg);
   }
 }

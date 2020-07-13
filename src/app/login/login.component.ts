@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]
-    }); 
+    });
   }
   checkLogin() {
     if (this.loginForm.invalid) {
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls.password.value};
     (this.authser.authenticate(loginPayload).subscribe(
       data => {
-        this.router.navigate([''])
+        this.router.navigate(['home'])
         this.invalidLogin = false
       },
       error => {
