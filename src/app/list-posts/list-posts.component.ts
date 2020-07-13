@@ -6,10 +6,12 @@ import { PostMsg } from '../services/postservice.service';
   styleUrls: ['./list-posts.component.css']
 })
 export class ListPostsComponent implements OnInit {
-
+  userID :any;
   constructor() { }
-  @Input() postMsg: PostMsg;
+  @Input() postMsg: PostMsg; 
   ngOnInit(): void {
+    var userId  =sessionStorage.getItem('userId');
+    this.userID=userId;
   }
 
 }
