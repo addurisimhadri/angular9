@@ -1,25 +1,30 @@
 <div class="mat-cell" scope="row">
     <div class="post">
         <div class="name row" >
-            <div class="col1" *ngIf="postMsg.imageModel.picByte">
-                <img  class="img" src="data:image/jpeg;base64,{{postMsg.imageModel.picByte}}">
+            <div class="col1" *ngIf="postMsg.picByte">
+                <img  class="img" src="data:image/jpeg;base64,{{postMsg.picByte}}">
             </div>
-            <div class="col1" *ngIf="!postMsg.imageModel.picByte">
+            <div class="col1" *ngIf="!postMsg.picByte">
                 <img src="assets/images/logo.png" class="img" >
             </div>
              <div class="col1">{{postMsg.username}} </div>
              <div class="col1">
-             {{postMsg.createdAt}} 
+             {{postMsg.createdAt | date:'medium'}} 
             </div>
         </div>
-        {{postMsg.msg}}
-        <div class="name row" >
+        <div style="margin-left: 20px;">{{postMsg.msg}}</div>
+        <div class="name row" style="margin-left: 20px;">
             <div class="col2" >
-                <img src="assets/images/like.png" class="img1" >
+                <div *ngIf="postMsg.liked == true">
+                    <img src="assets/images/like.png" (click)="liked(postMsg)" class="img2" >
+                </div>
+                <div *ngIf="postMsg.liked == false">
+                <img src="assets/images/like.png" (click)="liked(postMsg)" class="img1" >
+                </div>
             </div>
             <div class="col2">{{postMsg.likeCount}} </div>
             <div class="col2" *ngIf="postMsg.userId == userID">
-                <img src="assets/images/delete.png" class="img1" >
+                <img src="assets/images/delete.png" (click)="delete(postMsg)"class="img1" >
             </div>
 
         </div>

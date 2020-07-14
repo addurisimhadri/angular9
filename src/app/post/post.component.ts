@@ -20,9 +20,9 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     var userId=sessionStorage.getItem('userId');
-    this.postMsg.userId=userId;
+    this.postMsg.userId=userId; 
     this.getAllPostMsgs({ page: "0", size: "5" });
-    (function ($) {
+    (function ($) { 
       $('textarea').keyup(function() {
           var characterCount = $(this).val().length,
           current = $('#current'),
@@ -89,7 +89,7 @@ export class PostComponent implements OnInit {
        this.loading = false;
       }, error => {
         this.loading = false;
-      }
+      } 
     );
   }
   nextPage(event: PageEvent) {

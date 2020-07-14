@@ -10,9 +10,9 @@ export class PostMsg{
     public likeCount:string,
     public createdAt:any ,
     public username: string,
-    public imageModel :any,
+    public picByte :any,
     public liked :any
-  ) {}
+  ) {} 
    
 }
 export class ApiResponse {
@@ -29,13 +29,15 @@ export class PostserviceService {
 
   constructor(private httpClient:HttpClient) { }
   web_url : any =sessionStorage.getItem('web_url');
+
   getPostMsgs(request): Observable<any> {     
-    const params = request;
-    return this.httpClient.get<any>(this.web_url+"/cmsapi/post/getAll",{params});
+    var userId  =sessionStorage.getItem('userId');
+    const params = request; 
+    return this.httpClient.get<any>(this.web_url+"/cmsapi/post/getAll/"+userId,{params});
   }
   createPostMsg(postMsg) :Observable<ApiResponse>{
     //const params = request;
-    //alert(postMsg.msg);
+    alert(postMsg.msg);
     return this.httpClient.post<ApiResponse>(this.web_url+"/cmsapi/post/add", postMsg);
   }
 }

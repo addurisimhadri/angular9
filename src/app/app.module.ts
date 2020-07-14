@@ -27,6 +27,8 @@ import { PostserviceService } from './services/postservice.service';
 import { ImageserviceService } from './services/imageservice.service';
 import { UserimageuploadComponent } from './userimageupload/userimageupload.component';
 import { HomeComponent } from './home/home.component';
+import { ToastrModule } from 'ngx-toastr';
+import {MytoasterService } from './toast/mytoaster.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,9 @@ import { HomeComponent } from './home/home.component';
     MatButtonModule,
     MatMenuModule,
     MatSidenavModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ToastrModule.forRoot(
+    )
   ],
   providers: [
    { provide: HTTP_INTERCEPTORS,
@@ -62,7 +66,8 @@ import { HomeComponent } from './home/home.component';
     multi: true},
     EmployeeserviceService,
     PostserviceService,
-    ImageserviceService
+    ImageserviceService,
+    MytoasterService
   ], 
   bootstrap: [AppComponent]
 })
