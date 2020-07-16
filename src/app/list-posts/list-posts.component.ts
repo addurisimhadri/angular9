@@ -27,9 +27,9 @@ export class ListPostsComponent implements OnInit {
   delete(postMsg: PostMsg) :void {    
     this.likedService.delete(postMsg).subscribe( data => {
       //this.postMsg=data.result;
-      this.toastr.showToast('delte', data.message, 'success');  
+      this.toastr.showToast('delte', data.message, 'success'); 
+      this.getPostMsg.emit(postMsg);
       this.router.navigate(['posts']);
-     
     }, error => {
       alert(error.message);
       ;

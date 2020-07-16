@@ -21,7 +21,7 @@ import { ListPostsComponent } from './list-posts/list-posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  MatSidenavModule } from '@angular/material/sidenav';
 import {  MatMenuModule } from '@angular/material/menu';
-import {  MatButtonModule } from '@angular/material/button';
+import {  MatButtonModule ,} from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostserviceService } from './services/postservice.service';
 import { ImageserviceService } from './services/imageservice.service';
@@ -29,6 +29,9 @@ import { UserimageuploadComponent } from './userimageupload/userimageupload.comp
 import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import {MytoasterService } from './toast/mytoaster.service'
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatIconModule} from '@angular/material/icon'
+import {MatListModule} from '@angular/material/list'
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +61,10 @@ import {MytoasterService } from './toast/mytoaster.service'
     MatSidenavModule,
     MatPaginatorModule,
     ToastrModule.forRoot(
-    )
+    ),
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
    { provide: HTTP_INTERCEPTORS,

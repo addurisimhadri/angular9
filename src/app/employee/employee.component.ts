@@ -42,6 +42,7 @@ export class EmployeeComponent implements OnInit {
       .subscribe( data => { 
         alert(data.message); 
         this.employees = this.employees.filter(e => e !== employee);
+        this.totalElements = this.totalElements-1;
       })
   }; 
   editEmployee(employee: Employee): void {

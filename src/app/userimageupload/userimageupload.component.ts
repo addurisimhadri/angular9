@@ -62,14 +62,13 @@ export class UserimageuploadComponent implements OnInit {
     this.imageserviceService.getImage(userId)
       .subscribe(
         res => { 
-          alert("=========================="+res.userId)
           if(res.userId>0){
           this.retrieveResonse = res;
           this.base64Data = this.retrieveResonse.picByte;
           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
           }
         }, error => { 
-          alert(console.error());
+          //alert(console.error());
           alert(error.status+"=========="+error.message+"=========="+error.data);
         }
         

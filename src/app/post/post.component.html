@@ -21,7 +21,8 @@
   
     <div class="mat-table">
         <div *ngFor="let postMsg of postMsgs" class="mat-row">
-            <app-list-posts [postMsg]="postMsg" ></app-list-posts>
+            <app-list-posts [postMsg]="postMsg" (getPostMsg)="displayPostMsg($event)"></app-list-posts>
+            
             
         </div>
 </div>

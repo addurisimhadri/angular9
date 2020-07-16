@@ -98,4 +98,9 @@ export class PostComponent implements OnInit {
     request['size'] = event.pageSize.toString();
     this.getAllPostMsgs(request);
   }
+  displayPostMsg(postMsg :PostMsg){
+    //alert(postMsg.msg);
+    this.getAllPostMsgs({ page: "0", size: "5" });
+    
+  }
 }
