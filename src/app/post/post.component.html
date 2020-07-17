@@ -1,5 +1,5 @@
 
-<div class="wrapper">
+<div class="wrapper" >
     <h1>Post Message</h1>
     <form #postForm="ngForm" (ngSubmit)="submit()">       
         <textarea name="msg" id="msg" [(ngModel)]="postMsg.msg"  #msg="ngModel"class="form-control" maxlength="300" placeholder="Start Typin..." required ></textarea>

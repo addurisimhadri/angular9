@@ -3,3 +3,10 @@
     height: 30px;
     border-radius: 15px;
 }
+.mat-toolbar-row, .mat-toolbar-single-row {
+	height: 50px;
+}
+.mat-toolbar-multiple-rows {
+	min-height: 50px;
+}
+

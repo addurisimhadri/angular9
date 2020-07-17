@@ -1,25 +1,93 @@
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span><img src="./assets/images/logo.png"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer >
+    <mat-nav-list>
+      <a mat-list-item routerLink='/first'>First Component</a>
+      <a mat-list-item routerLink='/second'>Second Component</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 
 
 <header *ngIf="authService.isUserLoggedIn()">
-    <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
-      <div *ngIf="authService.isUserLoggedIn() && retrievedImage">
-        <a *ngIf="authService.isUserLoggedIn()" routerLink="/upload"  class="navbar-brand"><img  class="img" [src]="retrievedImage"></a>
+  <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
+    <div *ngIf="authService.isUserLoggedIn() && retrievedImage">
+      <a *ngIf="authService.isUserLoggedIn()" routerLink="/upload"  class="navbar-brand"><img  class="img" [src]="retrievedImage"></a>
+  </div>
+  <div *ngIf="authService.isUserLoggedIn() && isImageNotexist && !retrievedImage" >
+    <a href="/upload" class="navbar-brand"><img src="assets/images/logo.png" class="img" ></a>
+  </div>
+  <div style="margin-left: 5px;">     
+    <a *ngIf="authService.isUserLoggedIn()" routerLink="/home" class="navbar-brand">Simhadri</a></div>    
+  <ul class="navbar-nav">
+    <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/viewemployee" class="nav-link">View Employees</a></li>
+    <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/posts" class="nav-link">Posts</a></li>
+  </ul>
+  <ul class="navbar-nav navbar-collapse justify-content-end">
+    <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout" class="nav-link signout"><img src="assets/images/log_icon_1.png" class="img" > LogOut</a>        
+    </li>
+  </ul>    
+  </nav>  
+  </header> 
+
+
+  <!--
+
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<mat-toolbar color="primary" *ngIf="authService.isUserLoggedIn()">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon  class="sn-bg-1" (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <span class="menu-spacer"></span>
+    <div >
+      <a mat-button *ngIf="authService.isUserLoggedIn() && !retrievedImage" routerLink="'/upload'" ><img src="assets/images/logo.png" class="img" ></a>
+      <a mat-button *ngIf="authService.isUserLoggedIn() && retrievedImage" routerLink="/upload"  ><img  class="img" [src]="retrievedImage"></a>
+      <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/home" >Simhadri</a>
+      <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/viewemployee" >View Employees</a>
+      <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/posts" class="nav-link">Posts</a>
+       
     </div>
-    <div *ngIf="authService.isUserLoggedIn() && isImageNotexist && !retrievedImage" >
-      <a href="/upload" class="navbar-brand"><img src="assets/images/logo.png" class="img" ></a>
+    <div class="container text-right" >
+      <a mat-button routerLink="/logout" class="float-right"><img src="assets/images/log_icon_1.png" class="img" > LogOut</a>   
     </div>
-    <div style="margin-left: 5px;">     
-      <a *ngIf="authService.isUserLoggedIn()" routerLink="/home" class="navbar-brand">Simhadri</a></div>    
-    <ul class="navbar-nav">
-      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/viewemployee" class="nav-link">View Employees</a></li>
-      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/posts" class="nav-link">Posts</a></li>
-    </ul>
-    <ul class="navbar-nav navbar-collapse justify-content-end">
-      <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout" class="nav-link signout"><img src="assets/images/log_icon_1.png" class="img" > LogOut</a>        
-      </li>
-    </ul>    
-    </nav>  
-    </header> 
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      
+      <a mat-list-item [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-list-item [routerLink]="'/activities'"> Activities </a>
+      <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+  -->
